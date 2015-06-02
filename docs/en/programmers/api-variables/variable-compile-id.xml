@@ -8,24 +8,27 @@
   <parameter>$compile_id</parameter> and it will be used implicitly thereafter.
  </para>
  <para>
-  With a <parameter>$compile_id</parameter> you can work around the limitation
-  that you cannot use the same
-  <link linkend="variable.compile.dir"><parameter>$compile_dir</parameter></link>
-  for different <link linkend="variable.template.dir">
-  <parameter>$template_dirs</parameter></link>.  If you set a distinct
-  <parameter>$compile_id</parameter> for each
-  <link linkend="variable.template.dir"><parameter>$template_dir</parameter>
-  </link> then Smarty can tell the compiled templates apart by their
-  <parameter>$compile_id</parameter>.
+  If you use the same template with different <link linkend="plugins.prefilters.postfilters">pre- and/or post-filters</link> you must use a unique <parameter>$compile_id</parameter>
+  to keep the compiled template files separated.
  </para>
  <para>
-  If you have for example a
+  For example a
   <link linkend="plugins.prefilters.postfilters">prefilter</link>
   that localizes your templates
   (that is: translates language dependend parts) at compile time, then
   you could use the current language as <parameter>$compile_id</parameter> and
   you will get a  set of compiled templates for each language you use.
  </para>
+ <example>
+  <title>$compile_id for language</title>
+  <programlisting role="php">
+<![CDATA[
+<?php
+$smarty->compile_id = 'en';
+?>
+]]>
+  </programlisting>
+ </example>
  <para>
   Another application would be to use the same compile directory across
   multiple domains / multiple virtual hosts.
@@ -43,6 +46,15 @@ $smarty->compile_dir = '/path/to/shared_compile_dir';
 ]]>
   </programlisting>
  </example>
+ <note>
+  <title>Note</title>
+  <para>
+   In Smarty 3 a <parameter>$compile_id</parameter> is no longer required to keep templates with same name in different <link linkend="variable.template.dir"><parameter>$template_dir</parameter>
+    folders</link> separated. The <link linkend="variable.template.dir"><parameter>$template_dir</parameter>
+     file path</link> is encoded in the file name of compiled and cached template files.
+  </para>
+ </note>
+ 
 </sect1>
 <!-- Keep this comment at the end of the file
 Local variables:
