@@ -171,7 +171,8 @@
   <sect1 id="installation.requirements">
    <title>Requirements</title>
    <para>
-    Smarty requires a web server running PHP 5.2 or greater.
+    Smarty requires a web server running PHP 5.3 or greater.
+    (5.3.6 to avoid known issues with some modules.)
    </para>
   </sect1>
 
@@ -353,7 +354,7 @@ ini_set('include_path', ini_get('include_path').PATH_SEPARATOR.'c:/webroot/lib/S
       that will use Smarty
      </para></listitem>
      <listitem><para>
-      You can verify if your system has the correct access rights for these directories with 
+      You can verify if your system has the correct access rights for these directories with
       <link linkend="api.test.install"><varname>testInstall()</varname></link>.
      </para></listitem>
     </itemizedlist>
