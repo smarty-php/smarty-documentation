@@ -60,8 +60,8 @@ $smarty->display('index.tpl');
    <screen>
 <![CDATA[
 Da ein <font face="helvetica">betrunkener Mann</font> auf einem Flug ausfallend wurde, musste <b>das Flugzeug</b> auf einer kleinen Insel zwischenlanden und den Mann aussetzen.
+Da ein  betrunkener Mann  auf einem Flug ausfallend wurde, musste das  Flugzeug  auf einer kleinen Insel zwischenlanden und den Mann aussetzen.
 Da ein betrunkener Mann auf einem Flug ausfallend wurde, musste das Flugzeug auf einer kleinen Insel zwischenlanden und den Mann aussetzen.
-Da ein <font face="helvetica">betrunkener Mann</font> auf einem Flug ausfallend wurde, musste <b>das Flugzeug</b> auf einer kleinen Insel zwischenlanden und den Mann aussetzen.
 ]]>
    </screen>
   </example>
