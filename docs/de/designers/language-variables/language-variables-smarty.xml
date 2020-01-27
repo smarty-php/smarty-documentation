@@ -12,7 +12,7 @@
  <title>Request-Variablen</title>
   <para>
  
-   Aud die <ulink
+   Auf die <ulink
    url="&url.php-manual;reserved.variables">Request-Variablen </ulink>
    $_GET, $_POST, $_COOKIE, $_SERVER, $_ENV and $_SESSION (siehe <link
    linkend="variable.request.vars.order">$request_vars_order</link>
@@ -138,7 +138,7 @@
  <sect2 id="language.variables.smarty.ldelim">
   <title>{$smarty.ldelim}, {$smarty.rdelim}</title>
   <para>
-   Diese Variablen dienen dazu den linken und rechten Trennzeichen
+   Diese Variablen dienen dazu die linken und rechten Trennzeichen
    wortwörtlich auszugeben. Siehe auch <link
    linkend="language.function.ldelim">{ldelim},{rdelim}</link>.
   </para>
