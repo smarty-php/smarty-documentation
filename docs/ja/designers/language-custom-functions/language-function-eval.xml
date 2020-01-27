@@ -11,7 +11,7 @@
   </para>
   <para>
    <parameter>assign</parameter> 属性が指定されると、
-   <varname>{eval}</varname> 関数の出y録はこのテンプレート変数に割り当てられ、
+   <varname>{eval}</varname> 関数の出力はこのテンプレート変数に割り当てられ、
    テンプレートに出力されることはありません。
  </para>
 
