@@ -12,8 +12,8 @@
    </para>
    <para>
     Optionally <varname>{block}</varname> areas of child and parent templates can be merged into each other. You can append or prepend the parent <varname>{block}</varname>
-     content by using the <literal>append</literal> or <literal>prepend</literal> option flag with the childs <varname>{block}</varname> definition. With the {$smarty.block.parent} the <varname>{block}</varname> content 
-    of the parent template can be inserted at any location of the child <varname>{block}</varname> content. {$smarty.block.child} inserts the <varname>{block}</varname> content of 
+     content by using the <literal>append</literal> or <literal>prepend</literal> option flag with the childs <varname>{block}</varname> definition. With the {$smarty.block.parent} the <varname>{block}</varname> content
+    of the parent template can be inserted at any location of the child <varname>{block}</varname> content. {$smarty.block.child} inserts the <varname>{block}</varname> content of
     the child template at any location of the parent <varname>{block}</varname>.
    </para>
    <para><varname>{blocks}'s</varname> can be nested.
@@ -49,7 +49,7 @@
   </tgroup>
  </informaltable>
 
- 
+
  <para><emphasis role="bold">Option Flags (in child templates only):</emphasis></para>
  <informaltable frame="all">
   <tgroup cols="2">
@@ -65,15 +65,15 @@
     <row>
      <entry>append</entry>
      <entry>The <varname>{block}</varname> content will be be appended to the content of the parent template <varname>{block}</varname></entry>
-    </row>    
+    </row>
      <row>
        <entry>prepend</entry>
        <entry>The <varname>{block}</varname> content will be prepended to the content of the parent template <varname>{block}</varname></entry>
-     </row>    
+     </row>
      <row>
        <entry>hide</entry>
        <entry>Ignore the block content if no child block of same name is existing.</entry>
-     </row>    
+     </row>
      <row>
        <entry>nocache</entry>
        <entry>Disables caching of the <varname>{block}</varname> content</entry>
@@ -81,7 +81,7 @@
    </tbody>
   </tgroup>
  </informaltable>
- 
+
 
  <example>
   <title>Simple <varname>{block}</varname> example</title>
@@ -99,7 +99,7 @@
   <para>child.tpl</para>
   <programlisting>
 <![CDATA[
-{extends file="parent.tpl"} 
+{extends file="parent.tpl"}
 {block name="title"}
 Page Title
 {/block}
@@ -114,17 +114,17 @@ Page Title
   </head>
 </html>
 ]]>
-</programlisting> 
+</programlisting>
  </example>
- 
+
  <example>
-  <title>Prepend <varname>{block}</varname> example</title>
+  <title>Append <varname>{block}</varname> example</title>
   <para>parent.tpl</para>
   <programlisting>
 <![CDATA[
 <html>
   <head>
-    <title>{block name="title"}Title - {/block}</title>
+    <title>{block name="title"}Title{/block}</title>
   </head>
 </html>
 ]]>
@@ -132,10 +132,8 @@ Page Title
   <para>child.tpl</para>
   <programlisting>
 <![CDATA[
-{extends file="parent.tpl"} 
-{block name="title" prepend}
-Page Title
-{/block}
+{extends file="parent.tpl"}
+{block name="title" append} - Page Title{/block}
 ]]>
   </programlisting>
   <para>The result would look like</para>
@@ -147,11 +145,11 @@ Page Title
   </head>
 </html>
 ]]>
-</programlisting> 
+</programlisting>
  </example>
 
  <example>
-  <title>Append <varname>{block}</varname> example</title>
+  <title>Prepend <varname>{block}</varname> example</title>
   <para>parent.tpl</para>
   <programlisting>
 <![CDATA[
@@ -165,8 +163,8 @@ Page Title
   <para>child.tpl</para>
   <programlisting>
 <![CDATA[
-{extends file="parent.tpl"} 
-{block name="title" append}
+{extends file="parent.tpl"}
+{block name="title" prepend}
 Page Title
 {/block}
 ]]>
@@ -180,9 +178,9 @@ Page Title
   </head>
 </html>
 ]]>
-</programlisting> 
+</programlisting>
  </example>
- 
+
  <example>
   <title><varname>{$smarty.block.child}</varname> example</title>
   <para>parent.tpl</para>
@@ -195,10 +193,20 @@ Page Title
 </html>
 ]]>
   </programlisting>
+  <para>or using <varname>{child}</varname> macro</para>
+  <programlisting>
+<![CDATA[
+<html>
+  <head>
+    <title>{block name="title"}The {child} was inserted here{/block}</title>
+  </head>
+</html>
+]]>
+  </programlisting>
   <para>child.tpl</para>
   <programlisting>
 <![CDATA[
-{extends file="parent.tpl"} 
+{extends file="parent.tpl"}
 {block name="title"}
 Child Title
 {/block}
@@ -213,8 +221,9 @@ Child Title
   </head>
 </html>
 ]]>
-</programlisting> 
+</programlisting>
  </example>
+
  <example>
   <title><varname>{$smarty.block.parent}</varname> example</title>
   <para>parent.tpl</para>
@@ -230,9 +239,18 @@ Child Title
   <para>child.tpl</para>
   <programlisting>
 <![CDATA[
-{extends file="parent.tpl"} 
+{extends file="parent.tpl"}
 {block name="title"}
 You will see now - {$smarty.block.parent} - here
+{/block}
+]]>
+  </programlisting>
+  <para>or using <varname>{parent}</varname> macro</para>
+  <programlisting>
+<![CDATA[
+{extends file="parent.tpl"}
+{block name="title"}
+You will see now - {parent} - here
 {/block}
 ]]>
   </programlisting>
@@ -245,9 +263,9 @@ You will see now - {$smarty.block.parent} - here
   </head>
 </html>
 ]]>
-</programlisting> 
+</programlisting>
  </example>
- 
+
  <para>
   See also
   <link linkend="advanced.features.template.inheritance">Template Inheritance</link>,
