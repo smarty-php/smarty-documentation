@@ -58,7 +58,7 @@
   </tgroup>
  </informaltable>
 
- 
+
  <para><emphasis role="bold">オプションのフラグ (子テンプレートのみ)</emphasis></para>
  <informaltable frame="all">
   <tgroup cols="2">
@@ -74,15 +74,15 @@
     <row>
      <entry>append</entry>
      <entry><varname>{block}</varname> のコンテンツを親テンプレートの <varname>{block}</varname> に追記する</entry>
-    </row>    
+    </row>
     <row>
      <entry>prepend</entry>
      <entry><varname>{block}</varname> のコンテンツを親テンプレートの <varname>{block}</varname> の前に置く</entry>
-    </row>    
+    </row>
      <row>
        <entry>hide</entry>
        <entry>同じ名前の子ブロックが存在しないときに、ブロックのコンテンツを無視する</entry>
-     </row>    
+     </row>
      <row>
        <entry>nocache</entry>
        <entry><varname>{block}</varname> のコンテンツのキャッシュを無効にする</entry>
@@ -90,7 +90,7 @@
    </tbody>
   </tgroup>
  </informaltable>
- 
+
 
  <example>
   <title>シンプルな <varname>{block}</varname> の例</title>
@@ -108,7 +108,7 @@
   <para>child.tpl</para>
   <programlisting>
 <![CDATA[
-{extends file="parent.tpl"} 
+{extends file="parent.tpl"}
 {block name="title"}
 Page Title
 {/block}
@@ -123,17 +123,17 @@ Page Title
   </head>
 </html>
 ]]>
-</programlisting> 
+</programlisting>
  </example>
- 
+
  <example>
-  <title><varname>{block}</varname> を前に置く例</title>
+  <title><varname>{block}</varname> を後に置く例</title>
   <para>parent.tpl</para>
   <programlisting>
 <![CDATA[
 <html>
   <head>
-    <title>{block name="title"}Title - {/block}</title>
+    <title>{block name="title"}Title{/block}</title>
   </head>
 </html>
 ]]>
@@ -141,10 +141,8 @@ Page Title
   <para>child.tpl</para>
   <programlisting>
 <![CDATA[
-{extends file="parent.tpl"} 
-{block name="title" prepend}
-Page Title
-{/block}
+{extends file="parent.tpl"}
+{block name="title" append} - Page Title{/block}
 ]]>
   </programlisting>
   <para>結果は、このようになります。</para>
@@ -156,11 +154,11 @@ Page Title
   </head>
 </html>
 ]]>
-</programlisting> 
+</programlisting>
  </example>
 
  <example>
-  <title><varname>{block}</varname> を後に置く例</title>
+  <title><varname>{block}</varname> を前に置く例</title>
   <para>parent.tpl</para>
   <programlisting>
 <![CDATA[
@@ -174,8 +172,8 @@ Page Title
   <para>child.tpl</para>
   <programlisting>
 <![CDATA[
-{extends file="parent.tpl"} 
-{block name="title" append}
+{extends file="parent.tpl"}
+{block name="title" prepend}
 Page Title
 {/block}
 ]]>
@@ -189,9 +187,9 @@ Page Title
   </head>
 </html>
 ]]>
-</programlisting> 
+</programlisting>
  </example>
- 
+
  <example>
   <title><varname>{$smarty.block.child}</varname> の例</title>
   <para>parent.tpl</para>
@@ -204,10 +202,20 @@ Page Title
 </html>
 ]]>
   </programlisting>
+  <para>or using <varname>{child}</varname> macro</para>
+  <programlisting>
+<![CDATA[
+<html>
+  <head>
+    <title>{block name="title"}The {child} was inserted here{/block}</title>
+  </head>
+</html>
+]]>
+  </programlisting>
   <para>child.tpl</para>
   <programlisting>
 <![CDATA[
-{extends file="parent.tpl"} 
+{extends file="parent.tpl"}
 {block name="title"}
 Child Title
 {/block}
@@ -222,7 +230,7 @@ Child Title
   </head>
 </html>
 ]]>
-</programlisting> 
+</programlisting>
  </example>
  <example>
   <title><varname>{$smarty.block.parent}</varname> の例</title>
@@ -239,9 +247,18 @@ Child Title
   <para>child.tpl</para>
   <programlisting>
 <![CDATA[
-{extends file="parent.tpl"} 
+{extends file="parent.tpl"}
 {block name="title"}
 You will see now - {$smarty.block.parent} - here
+{/block}
+]]>
+  </programlisting>
+  <para>or using <varname>{parent}</varname> macro</para>
+  <programlisting>
+<![CDATA[
+{extends file="parent.tpl"}
+{block name="title"}
+You will see now - {parent} - here
 {/block}
 ]]>
   </programlisting>
@@ -254,9 +271,9 @@ You will see now - {$smarty.block.parent} - here
   </head>
 </html>
 ]]>
-</programlisting> 
+</programlisting>
  </example>
- 
+
  <para>
   <link linkend="advanced.features.template.inheritance">テンプレートの継承</link>、
   <link linkend="language.variables.smarty.block.parent"><parameter>$smarty.block.parent</parameter></link>、
