@@ -131,7 +131,7 @@ smarty [AT] example [DOT] com
  </example>
  <para>
   Voir aussi la
-  l'<link linkend="language.escaping">anayse Smarty d'échappement</link>,
+  l'<link linkend="language.escaping">analyse Smarty d'échappement</link>,
   <link linkend="language.function.mailto"><varname>{mailto}</varname></link> et
   le <link linkend="tips.obfuscating.email">mascage des adresses e-mail</link>.
  </para>
